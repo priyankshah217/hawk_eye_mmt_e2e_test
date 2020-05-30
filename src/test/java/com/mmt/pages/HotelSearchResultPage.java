@@ -18,7 +18,7 @@ public class HotelSearchResultPage extends SearchResultPage {
 
     public SearchResultPage applyFilters() {
         dismissBackdrop();
-        applyPriceFilter();
+        applyMinPriceFilter(maxSliderMoves);
         applyRatingFilter();
         return this;
     }
@@ -27,16 +27,15 @@ public class HotelSearchResultPage extends SearchResultPage {
         findElement(backdrop).click();
     }
 
-    private void applyPriceFilter() {
+    private void applyMinPriceFilter(int maxTries) {
         scrollToElement(priceSlider);
-        int count = 0;
-        while (isNotPrice(requiredMinPrice) && count < maxSliderMoves) {
-            count++;
-            moveSlider(priceSlider, Keys.ARROW_RIGHT);
+        if (isNotRequiredPrice() && maxTries > 0) {
+            findElement(priceSlider).sendKeys(Keys.ARROW_RIGHT);
+            applyMinPriceFilter(--maxTries);
         }
     }
 
-    private boolean isNotPrice(String requiredMinPrice) {
+    private boolean isNotRequiredPrice() {
         return !findElement(minValue).getText().equals(requiredMinPrice);
     }
 

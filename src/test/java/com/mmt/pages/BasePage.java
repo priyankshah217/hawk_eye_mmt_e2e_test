@@ -14,7 +14,7 @@ import java.time.Duration;
 abstract public class BasePage {
     protected WebDriver driver = DriverHelper.getDriver();
     private final int maxWaitTime = 30;
-    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(maxWaitTime));
 
     protected WebElement findElement(By locator) {
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
@@ -26,9 +26,5 @@ abstract public class BasePage {
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
         actions.perform();
-    }
-
-    protected void moveSlider(By locator, Keys arrowKey) {
-        findElement(locator).sendKeys(arrowKey);
     }
 }
