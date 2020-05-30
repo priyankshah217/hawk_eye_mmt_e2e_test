@@ -12,6 +12,7 @@ public class BookHotelTest {
     @BeforeClass
     public void setup() {
         WebDriverManager.chromedriver().setup();
+        DriverHelper.createDriver();
     }
 
     @Test

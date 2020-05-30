@@ -4,16 +4,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DriverHelper {
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> webDriverThreadLocal;
 
-    private DriverHelper() {
-
+    public static void createDriver() {
+        final WebDriver driver = new ChromeDriver();
+        if (webDriverThreadLocal == null) {
+            webDriverThreadLocal = ThreadLocal.withInitial(() -> driver);
+            webDriverThreadLocal.set(driver);
+        }
+        webDriverThreadLocal.set(driver);
     }
 
     public static WebDriver getDriver() {
-        if (driver == null) {
-            driver = new ChromeDriver();
-        }
-        return driver;
+        return webDriverThreadLocal.get();
     }
 }

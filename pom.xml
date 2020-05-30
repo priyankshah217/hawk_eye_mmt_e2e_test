@@ -4,6 +4,32 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>14</source>
+                    <target>14</target>
+                    <compilerArgs>
+                        <arg>--enable-preview</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M4</version>
+                <configuration>
+                    <argLine>--enable-preview</argLine>
+                    <parallel>classes</parallel>
+                    <threadCount>2</threadCount>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <groupId>org.example</groupId>
     <artifactId>hawk_eye_mmt_e2e_test</artifactId>
     <version>1.0-SNAPSHOT</version>
