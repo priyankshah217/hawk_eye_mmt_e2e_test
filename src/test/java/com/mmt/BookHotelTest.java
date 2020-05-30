@@ -3,13 +3,13 @@ package com.mmt;
 import com.mmt.business_layer.HotelBusinessLayer;
 import com.mmt.helpers.DriverHelper;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class BookHotelTest {
 
-    @BeforeClass
+    @BeforeMethod
     public void setup() {
         WebDriverManager.chromedriver().setup();
         DriverHelper.createDriver();
@@ -20,8 +20,7 @@ public class BookHotelTest {
         new HotelBusinessLayer()
                 .selectHotel();
     }
-
-    @AfterClass
+    @AfterMethod
     public void teardown() {
         DriverHelper.getDriver().quit();
     }

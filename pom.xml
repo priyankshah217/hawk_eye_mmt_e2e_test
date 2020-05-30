@@ -23,7 +23,7 @@
                 <version>3.0.0-M4</version>
                 <configuration>
                     <argLine>--enable-preview</argLine>
-                    <parallel>classes</parallel>
+                    <parallel>methods</parallel>
                     <threadCount>2</threadCount>
                 </configuration>
             </plugin>
