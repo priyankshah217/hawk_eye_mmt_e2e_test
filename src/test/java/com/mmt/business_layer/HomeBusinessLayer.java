@@ -11,6 +11,8 @@ public class HomeBusinessLayer {
     }
 
     public void selectHotel() {
-        homePage.selectService(ServiceOption.HOTELS);
+        homePage
+                .selectService(ServiceOption.HOTELS)
+                .search();
     }
 }
