@@ -9,6 +9,7 @@ public class HotelBusinessLayer {
         new HomePage()
                 .selectService(ServiceOption.HOTELS)
                 .populateSearchDetails()
-                .search();
+                .search()
+                .applyFilters();
     }
 }
