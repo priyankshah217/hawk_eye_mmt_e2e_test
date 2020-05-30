@@ -1,6 +1,6 @@
 package com.mmt.locators;
 
-import com.mmt.enums.ServiceOption;
+import com.mmt.helpers.ServiceOption;
 import org.openqa.selenium.By;
 
 public class ServiceOptionsHeaderLocator {
