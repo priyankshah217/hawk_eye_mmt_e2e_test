@@ -9,12 +9,11 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.Collections;
 import java.util.List;
 
 abstract public class BaseUI {
-    protected WebDriver driver = DriverHelper.getDriver();
     private final int maxWaitTime = 30;
+    protected WebDriver driver = DriverHelper.getDriver();
 
     public WebElement getElement(By locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(maxWaitTime));
@@ -28,7 +27,7 @@ abstract public class BaseUI {
                 driver.findElements(locator) : null;
     }
 
-    private boolean isElementPresent(By locator) {
+    public boolean isElementPresent(By locator) {
         try {
             driver.findElement(locator);
             return true;
