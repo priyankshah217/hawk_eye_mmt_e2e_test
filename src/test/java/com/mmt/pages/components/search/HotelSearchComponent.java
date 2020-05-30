@@ -16,6 +16,12 @@ public class HotelSearchComponent extends SearchComponent {
     private By locationList = By.id("react-autowhatever-1");
     private By checkInButton = By.id("checkin");
     private By dateController = By.className("DayPicker-Day");
+    private By guestLocator = By.id("guest");
+    private By roomDetails = By.className("addRooomDetails");
+    private By saveGuestInfo = By.cssSelector("button.primaryBtn.btnApply");
+    private By travelForButton = By.cssSelector("div.hsw_inputBox.travelFor");
+    private By travelForOptions = By.cssSelector("div.hsw_inputBox.travelFor.inactiveWidget.activeWidget > ul");
+    private By backdropBackground = By.className("overlayHighlight");
 
     public void search() {
         getElement(location).click();
@@ -25,7 +31,23 @@ public class HotelSearchComponent extends SearchComponent {
         List<WebElement> webElementList = getCheckinDates();
         webElementList.get(1).click();
         webElementList.get(5).click();
-        System.out.println("End");
+        getElement(guestLocator).click();
+        List<WebElement> guestList = getGuestList();
+        guestList.get(3).click();
+        guestList.get(13).click();
+        getElement(saveGuestInfo).click();
+        getElement(travelForButton).click();
+        getElement(travelForOptions).findElements(By.tagName("li")).get(0).click();
+        getElement(searchButton).click();
+    }
+
+    @NotNull
+    private List<WebElement> getGuestList() {
+        return getElements(roomDetails)
+                .stream()
+                .filter(webElement -> !webElement.getText().isBlank())
+                .flatMap(webElement -> webElement.findElements(By.tagName("li")).stream())
+                .collect(Collectors.toList());
     }
 
     @NotNull
