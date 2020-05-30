@@ -24,7 +24,12 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public void search() {
-        searchComponent.search();
+    public HomePage populateSearchDetails() {
+        searchComponent.populateSearchDetails();
+        return this;
+    }
+
+    public SearchResultPage search() {
+        return searchComponent.search();
     }
 }

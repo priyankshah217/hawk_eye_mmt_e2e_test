@@ -1,6 +1,6 @@
 package com.mmt;
 
-import com.mmt.business_layer.HomeBusinessLayer;
+import com.mmt.business_layer.HotelBusinessLayer;
 import com.mmt.helpers.DriverHelper;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.annotations.AfterClass;
@@ -17,7 +17,7 @@ public class BookHotelTest {
 
     @Test
     public void shouldBeAbleToSelectHotelsAndProceedToCheckout() {
-        new HomeBusinessLayer()
+        new HotelBusinessLayer()
                 .selectHotel();
     }
 
