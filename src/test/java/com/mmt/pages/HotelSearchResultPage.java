@@ -12,6 +12,7 @@ public class HotelSearchResultPage extends SearchResultPage {
     private By userRating = By.id("hlistpg_fr_user_rating");
     private String minimumUserRating = "4";
     private By userRatingsItems = By.tagName("li");
+    private By results = By.className("listingRow");
 
     private final int maxSliderMoves = 3;
     private final String requiredMinPrice = "INR 1000";
@@ -21,6 +22,11 @@ public class HotelSearchResultPage extends SearchResultPage {
         applyMinPriceFilter(maxSliderMoves);
         applyRatingFilter();
         return this;
+    }
+
+    public HotelDetailsPage selectHotelAtPosition(int position) {
+        findElements(results).get(position).click();
+        return new HotelDetailsPage();
     }
 
     private void dismissBackdrop() {
