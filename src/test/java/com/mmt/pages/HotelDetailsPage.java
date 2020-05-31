@@ -11,7 +11,11 @@ public class HotelDetailsPage extends BasePage {
 
     public void selectRoom() {
         scrollToElement(roomSection);
-        RunHelper.addRunData(HotelDetail.ROOM_NAME, findElement(roomName).getText());
+        storeRoomDetails();
         findElement(selectRoom).click();
+    }
+
+    private void storeRoomDetails() {
+        RunHelper.addRunData(HotelDetail.ROOM_NAME, findElement(roomName).getText());
     }
 }
