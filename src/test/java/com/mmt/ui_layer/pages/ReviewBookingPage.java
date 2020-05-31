@@ -1,5 +1,13 @@
 package com.mmt.ui_layer.pages;
 
-public abstract class ReviewBookingPage {
-    public abstract void addTravellerDetails();
+import com.mmt.ui_layer.UILayer;
+
+public abstract class ReviewBookingPage extends UILayer {
+    public abstract ReviewBookingPage addTravellerDetails();
+
+    public abstract ReviewBookingPage addSpecialRequests(int numberOfSpecialRequests);
+
+    public abstract ReviewBookingPage removeDonations();
+
+    public abstract void proceedToPay();
 }

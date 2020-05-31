@@ -21,8 +21,7 @@ public class BookHotelTest {
     @Test
     public void shouldBeAbleToSelectHotelsAndProceedToCheckout() {
         new HotelBusinessLayer().selectHotel();
-        new BookingBusinessLayer().addTravellerInformation();
-
+        new BookingBusinessLayer().confirmHotel();
     }
     @AfterMethod
     public void teardown() {
