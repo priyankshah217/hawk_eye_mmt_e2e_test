@@ -1,6 +1,6 @@
-package com.mmt.pages.components.search;
+package com.mmt.ui_layer.components.search;
 
-import com.mmt.pages.SearchResultPage;
+import com.mmt.ui_layer.pages.SearchResultPage;
 
 public class FlightSearchComponent extends SearchComponent {
     public SearchResultPage search() {

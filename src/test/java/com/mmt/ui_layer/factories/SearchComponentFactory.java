@@ -1,9 +1,9 @@
-package com.mmt.pages.factories;
+package com.mmt.ui_layer.factories;
 
 import com.mmt.enums.ServiceOption;
-import com.mmt.pages.components.search.FlightSearchComponent;
-import com.mmt.pages.components.search.HotelSearchComponent;
-import com.mmt.pages.components.search.SearchComponent;
+import com.mmt.ui_layer.components.search.FlightSearchComponent;
+import com.mmt.ui_layer.components.search.HotelSearchComponent;
+import com.mmt.ui_layer.components.search.SearchComponent;
 
 public class SearchComponentFactory {
     public static SearchComponent getInstance(ServiceOption option) {

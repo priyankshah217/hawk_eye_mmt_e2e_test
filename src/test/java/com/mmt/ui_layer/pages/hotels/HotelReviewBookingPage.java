@@ -1,6 +1,6 @@
-package com.mmt.pages.hotels;
+package com.mmt.ui_layer.pages.hotels;
 
-import com.mmt.pages.ReviewBookingPage;
+import com.mmt.ui_layer.pages.ReviewBookingPage;
 
 public class HotelReviewBookingPage extends ReviewBookingPage {
     public void addTravellerDetails() {

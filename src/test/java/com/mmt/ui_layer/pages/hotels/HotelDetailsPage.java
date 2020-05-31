@@ -1,11 +1,11 @@
-package com.mmt.pages.hotels;
+package com.mmt.ui_layer.pages.hotels;
 
 import com.mmt.enums.HotelDetail;
 import com.mmt.helpers.RunHelper;
-import com.mmt.pages.BasePage;
+import com.mmt.ui_layer.UILayer;
 import org.openqa.selenium.By;
 
-public class HotelDetailsPage extends BasePage {
+public class HotelDetailsPage extends UILayer {
     private By roomName = By.cssSelector(".roomWrap .sticky :first-child");
     private By selectRoom = By.cssSelector(".roomWrap .primaryBtn");
     private By roomSection = By.id("RoomType");

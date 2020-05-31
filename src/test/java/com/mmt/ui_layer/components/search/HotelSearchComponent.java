@@ -1,7 +1,7 @@
-package com.mmt.pages.components.search;
+package com.mmt.ui_layer.components.search;
 
-import com.mmt.pages.hotels.HotelSearchResultPage;
-import com.mmt.pages.SearchResultPage;
+import com.mmt.ui_layer.pages.hotels.HotelSearchResultPage;
+import com.mmt.ui_layer.pages.SearchResultPage;
 import org.openqa.selenium.By;
 
 public class HotelSearchComponent extends SearchComponent {

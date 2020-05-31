@@ -1,8 +1,8 @@
-package com.mmt.pages.hotels;
+package com.mmt.ui_layer.pages.hotels;
 
 import com.mmt.enums.HotelDetail;
 import com.mmt.helpers.RunHelper;
-import com.mmt.pages.SearchResultPage;
+import com.mmt.ui_layer.pages.SearchResultPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;

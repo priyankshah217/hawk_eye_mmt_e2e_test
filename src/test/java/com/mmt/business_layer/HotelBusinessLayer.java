@@ -3,7 +3,7 @@ package com.mmt.business_layer;
 import com.mmt.enums.CommonRunVariables;
 import com.mmt.enums.ServiceOption;
 import com.mmt.helpers.RunHelper;
-import com.mmt.pages.HomePage;
+import com.mmt.ui_layer.pages.HomePage;
 
 public class HotelBusinessLayer {
 

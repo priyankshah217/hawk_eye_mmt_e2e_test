@@ -1,8 +1,7 @@
-package com.mmt.pages;
+package com.mmt.ui_layer;
 
 import com.mmt.helpers.DriverHelper;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -13,7 +12,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract public class BasePage {
+abstract public class UILayer {
     protected WebDriver driver = DriverHelper.getDriver();
     private final int maxWaitTime = 30;
     private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(maxWaitTime));

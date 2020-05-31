@@ -1,13 +1,14 @@
-package com.mmt.pages;
+package com.mmt.ui_layer.pages;
 
 import com.mmt.enums.ServiceOption;
-import com.mmt.pages.components.ServiceOptionsHeader;
-import com.mmt.pages.components.search.SearchComponent;
-import com.mmt.pages.factories.SearchComponentFactory;
+import com.mmt.ui_layer.UILayer;
+import com.mmt.ui_layer.components.ServiceOptionsHeader;
+import com.mmt.ui_layer.components.search.SearchComponent;
+import com.mmt.ui_layer.factories.SearchComponentFactory;
 
 import static com.mmt.enums.ServiceOption.DEFAULT;
 
-public class HomePage extends BasePage {
+public class HomePage extends UILayer {
     private String homeUrl = "https://makemytrip.com/";
     private ServiceOptionsHeader serviceOptionsHeader;
     private SearchComponent searchComponent;

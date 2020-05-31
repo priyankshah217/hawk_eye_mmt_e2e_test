@@ -1,6 +1,6 @@
 package com.mmt.business_layer;
 
-import com.mmt.pages.factories.ReviewBookingPageFactory;
+import com.mmt.ui_layer.factories.ReviewBookingPageFactory;
 
 public class BookingBusinessLayer {
     public void addTravellerInformation() {
