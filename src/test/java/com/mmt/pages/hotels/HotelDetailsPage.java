@@ -1,7 +1,8 @@
-package com.mmt.pages;
+package com.mmt.pages.hotels;
 
 import com.mmt.enums.HotelDetail;
 import com.mmt.helpers.RunHelper;
+import com.mmt.pages.BasePage;
 import org.openqa.selenium.By;
 
 public class HotelDetailsPage extends BasePage {
@@ -9,10 +10,11 @@ public class HotelDetailsPage extends BasePage {
     private By selectRoom = By.cssSelector(".roomWrap .primaryBtn");
     private By roomSection = By.id("RoomType");
 
-    public void selectRoom() {
+    public HotelReviewBookingPage selectRoom() {
         scrollToElement(roomSection);
         storeRoomDetails();
         findElement(selectRoom).click();
+        return new HotelReviewBookingPage();
     }
 
     private void storeRoomDetails() {

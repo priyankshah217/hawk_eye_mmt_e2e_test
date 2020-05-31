@@ -1,6 +1,6 @@
 package com.mmt.pages.components.search;
 
-import com.mmt.pages.HotelSearchResultPage;
+import com.mmt.pages.hotels.HotelSearchResultPage;
 import com.mmt.pages.SearchResultPage;
 import org.openqa.selenium.By;
 
