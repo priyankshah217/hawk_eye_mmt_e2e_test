@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 abstract public class BasePage {
@@ -32,5 +33,10 @@ abstract public class BasePage {
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
         actions.perform();
+    }
+
+    protected void switchToLastTab() {
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(tabs.size() - 1));
     }
 }

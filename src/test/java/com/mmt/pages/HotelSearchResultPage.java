@@ -32,7 +32,7 @@ public class HotelSearchResultPage extends SearchResultPage {
         WebElement selectedHotel = findElements(results).get(position);
         storeHotelDetails(selectedHotel);
         selectedHotel.click();
-
+        switchToLastTab();
         return new HotelDetailsPage();
     }
 
