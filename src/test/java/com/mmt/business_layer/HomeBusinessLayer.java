@@ -1,7 +1,8 @@
 package com.mmt.business_layer;
 
-import com.mmt.helpers.ServiceOption;
-import com.mmt.pages.HomePage;
+
+import com.mmt.enums.ServiceOption;
+import com.mmt.ui_layer.pages.HomePage;
 
 public class HomeBusinessLayer {
     private HomePage homePage;
@@ -11,8 +12,10 @@ public class HomeBusinessLayer {
     }
 
     public void selectHotel() {
-        homePage
-                .selectService(ServiceOption.HOTELS)
-                .search();
+        homePage.selectService(ServiceOption.HOTELS).search();
+    }
+
+    public void selectFlight() {
+        homePage.selectService(ServiceOption.FLIGHTS).search();
     }
 }
