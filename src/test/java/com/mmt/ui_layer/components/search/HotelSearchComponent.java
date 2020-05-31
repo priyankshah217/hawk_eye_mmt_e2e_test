@@ -19,20 +19,18 @@ public class HotelSearchComponent extends SearchComponent {
 
 
     public SearchResultPage search() {
-        getElement(Objects.requireNonNull(hotelSearchComponentLocator).location()).click();
-        getElement(hotelSearchComponentLocator.locationInput()).sendKeys("Mumbai");
-        getElements(hotelSearchComponentLocator.locationList()).stream().findFirst().get().click();
-        getElement(hotelSearchComponentLocator.checkInButton()).click();
-        List<WebElement> webElementList = getCheckinDates();
-        webElementList.get(1).click();
-        webElementList.get(5).click();
-        addRoom();
-        selectTravellingFor();
         getElement(hotelSearchComponentLocator.searchButton()).click();
         return new HotelSearchResultPage();
     }
 
     public void populateSearchDetails() {
+        getElement(Objects.requireNonNull(hotelSearchComponentLocator).location()).click();
+        getElement(hotelSearchComponentLocator.locationInput()).sendKeys("Goa");
+        getElements(hotelSearchComponentLocator.locationList()).stream().findFirst().get().click();
+        getElement(hotelSearchComponentLocator.checkInButton()).click();
+        List<WebElement> webElementList = getCheckinDates();
+        webElementList.get(1).click();
+        webElementList.get(5).click();
         addRoom();
         selectTravellingFor();
     }
