@@ -1,11 +1,13 @@
 package com.mmt.ui_layer.pages.hotels;
 
-import com.mmt.data.TravellerData;
+import com.mmt.data_models.Traveller;
 import com.mmt.ui_layer.pages.ReviewBookingPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+
+import static com.mmt.helpers.ResourceHelper.getData;
 
 public class HotelReviewBookingPage extends ReviewBookingPage {
     private By firstName = By.id("fName");
@@ -15,12 +17,13 @@ public class HotelReviewBookingPage extends ReviewBookingPage {
     private By specialRequests = By.cssSelector("._SpecialRequest li");
     private By donation = By.cssSelector(".donationOuter .checkmarkOuter");
     private By paymentButton = By.className("btnPayNow");
+    Traveller traveller = getData("data/traveller.yml");
 
     public HotelReviewBookingPage addTravellerDetails() {
-        findElement(firstName).sendKeys(TravellerData.FirstName.getValue());
-        findElement(lastName).sendKeys(TravellerData.LastName.getValue());
-        findElement(email).sendKeys(TravellerData.Email.getValue());
-        findElement(mobileNumber).sendKeys(TravellerData.MobileNumber.getValue());
+        findElement(firstName).sendKeys(traveller.firstName());
+        findElement(lastName).sendKeys(traveller.lastName());
+        findElement(email).sendKeys(traveller.email());
+        findElement(mobileNumber).sendKeys(traveller.mobileNumber());
         return this;
     }
 
