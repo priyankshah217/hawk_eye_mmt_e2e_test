@@ -10,7 +10,6 @@ public class DriverHelper {
         final WebDriver driver = new ChromeDriver();
         if (webDriverThreadLocal == null) {
             webDriverThreadLocal = ThreadLocal.withInitial(() -> driver);
-            webDriverThreadLocal.set(driver);
         }
         webDriverThreadLocal.set(driver);
     }
