@@ -1,46 +1,44 @@
 package com.mmt.ui_layer.pages.hotels;
 
+import com.mmt.annotations.Page;
 import com.mmt.data_models.Traveller;
-import com.mmt.ui_layer.pages.ReviewBookingPage;
-import org.openqa.selenium.By;
+import com.mmt.helpers.LocatorHelper;
+import com.mmt.locators.HotelReviewBookingLocator;
+import com.mmt.ui_layer.pages.base.ReviewBookingPage;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.Objects;
 
 import static com.mmt.helpers.ResourceHelper.getData;
 
+@Page
 public class HotelReviewBookingPage extends ReviewBookingPage {
-    private By firstName = By.id("fName");
-    private By lastName = By.id("lName");
-    private By email = By.id("email");
-    private By mobileNumber = By.id("mNo");
-    private By specialRequests = By.cssSelector("._SpecialRequest li");
-    private By donation = By.cssSelector(".donationOuter .checkmarkOuter");
-    private By paymentButton = By.className("btnPayNow");
+    private static final HotelReviewBookingLocator hotelReviewBookingLocator = LocatorHelper.getLocators("locators/hotelreviewbooking.yml");
     Traveller traveller = getData("data/traveller.yml");
 
     public HotelReviewBookingPage addTravellerDetails() {
-        findElement(firstName).sendKeys(traveller.firstName());
-        findElement(lastName).sendKeys(traveller.lastName());
-        findElement(email).sendKeys(traveller.email());
-        findElement(mobileNumber).sendKeys(traveller.mobileNumber());
+        getElement(Objects.requireNonNull(hotelReviewBookingLocator).firstName()).sendKeys(traveller.firstName());
+        getElement(Objects.requireNonNull(hotelReviewBookingLocator).lastName()).sendKeys(traveller.lastName());
+        getElement(Objects.requireNonNull(hotelReviewBookingLocator).email()).sendKeys(traveller.email());
+        getElement(Objects.requireNonNull(hotelReviewBookingLocator).email()).sendKeys(traveller.mobileNumber());
         return this;
     }
 
     public HotelReviewBookingPage addSpecialRequests(int numberOfSpecialRequests) {
-        List<WebElement> availableSpecialRequests = findElements(specialRequests);
+        List<WebElement> availableSpecialRequests = getElements(Objects.requireNonNull(hotelReviewBookingLocator).specialRequests());
         int specialRequestsToSelect = Math.min(availableSpecialRequests.size(), numberOfSpecialRequests);
         availableSpecialRequests.subList(0, specialRequestsToSelect).forEach(WebElement::click);
         return this;
     }
 
     public ReviewBookingPage removeDonations() {
-        findElement(donation).click();
+        getElement(Objects.requireNonNull(hotelReviewBookingLocator).donation()).click();
         return this;
     }
 
     @Override
     public void proceedToPay() {
-        findElement(paymentButton).click();
+        getElement(Objects.requireNonNull(hotelReviewBookingLocator).paymentButton()).click();
     }
 }

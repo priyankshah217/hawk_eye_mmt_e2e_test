@@ -1,23 +1,26 @@
 package com.mmt.ui_layer.pages.hotels;
 
+import com.mmt.annotations.Page;
 import com.mmt.enums.HotelDetail;
+import com.mmt.helpers.LocatorHelper;
 import com.mmt.helpers.RunHelper;
-import com.mmt.ui_layer.UILayer;
-import org.openqa.selenium.By;
+import com.mmt.locators.HotelDetailsLocator;
+import com.mmt.ui_layer.pages.base.UILayer;
 
+import java.util.Objects;
+
+@Page
 public class HotelDetailsPage extends UILayer {
-    private By roomName = By.cssSelector(".roomWrap .sticky :first-child");
-    private By selectRoom = By.cssSelector(".roomWrap .primaryBtn");
-    private By roomSection = By.id("RoomType");
+    private static final HotelDetailsLocator hotelDetailsLocator = LocatorHelper.getLocators("locators/hoteldetails.yml");
 
     public HotelReviewBookingPage selectRoom() {
-        scrollToElement(roomSection);
+        scrollToElement(Objects.requireNonNull(hotelDetailsLocator).roomSection());
         storeRoomDetails();
-        findElement(selectRoom).click();
+        getElement(hotelDetailsLocator.selectRoom()).click();
         return new HotelReviewBookingPage();
     }
 
     private void storeRoomDetails() {
-        RunHelper.addRunData(HotelDetail.ROOM_NAME, findElement(roomName).getText());
+        RunHelper.addRunData(HotelDetail.ROOM_NAME, getElement(Objects.requireNonNull(hotelDetailsLocator).roomName()).getText());
     }
 }

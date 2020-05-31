@@ -1,7 +1,5 @@
 package com.mmt.helpers;
 
-import com.mmt.enums.HotelDetail;
-
 import java.util.HashMap;
 import java.util.Map;
 
