@@ -1,6 +1,4 @@
-package com.mmt.ui_layer.pages;
-
-import com.mmt.ui_layer.UILayer;
+package com.mmt.ui_layer.pages.base;
 
 public abstract class ReviewBookingPage extends UILayer {
     public abstract ReviewBookingPage addTravellerDetails();
