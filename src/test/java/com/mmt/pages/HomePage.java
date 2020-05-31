@@ -1,11 +1,11 @@
 package com.mmt.pages;
 
-import com.mmt.helpers.ServiceOption;
+import com.mmt.enums.ServiceOption;
 import com.mmt.pages.components.ServiceOptionsHeader;
 import com.mmt.pages.components.search.SearchComponent;
 import com.mmt.pages.factories.SearchComponentFactory;
 
-import static com.mmt.helpers.ServiceOption.DEFAULT;
+import static com.mmt.enums.ServiceOption.DEFAULT;
 
 public class HomePage extends BasePage {
     private String homeUrl = "https://makemytrip.com/";

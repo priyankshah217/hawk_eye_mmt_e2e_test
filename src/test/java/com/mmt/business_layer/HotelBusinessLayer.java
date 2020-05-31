@@ -1,6 +1,6 @@
 package com.mmt.business_layer;
 
-import com.mmt.helpers.ServiceOption;
+import com.mmt.enums.ServiceOption;
 import com.mmt.pages.HomePage;
 import com.mmt.pages.HotelDetailsPage;
 

@@ -1,6 +1,6 @@
 package com.mmt.pages.factories;
 
-import com.mmt.helpers.ServiceOption;
+import com.mmt.enums.ServiceOption;
 import com.mmt.pages.components.search.FlightSearchComponent;
 import com.mmt.pages.components.search.HotelSearchComponent;
 import com.mmt.pages.components.search.SearchComponent;
