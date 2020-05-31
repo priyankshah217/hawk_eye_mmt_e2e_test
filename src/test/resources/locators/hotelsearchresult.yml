@@ -1,0 +1,7 @@
+backdrop: "class:mmBackdrop"
+priceSlider: "className:input-range__slider"
+minValue: "className:minValue"
+userRating: "id:hlistpg_fr_user_rating"
+userRatingsItems: "tagName:li"
+results: "className:listingRow"
+hotelNameLocator: "id:hlistpg_hotel_name"

@@ -1,0 +1,3 @@
+roomName: "css:.roomWrap .sticky :first-child"
+selectRoom: "css:.roomWrap .primaryBtn"
+roomSection: "id:RoomType"

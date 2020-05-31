@@ -1,0 +1,7 @@
+firstName: "id:fName"
+lastName: "id:lName"
+email: "id:email"
+mobileNumber: "id:mNo"
+specialRequests: "css:._SpecialRequest li"
+donation: "css:.donationOuter .checkmarkOuter"
+paymentButton: "class:btnPayNow"
