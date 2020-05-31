@@ -2,16 +2,16 @@ package com.mmt.pages;
 
 import com.mmt.annotations.Page;
 import com.mmt.enums.ServiceOption;
+import com.mmt.helpers.LocatorHelper;
+import com.mmt.locators.HomePageLocator;
 import com.mmt.pages.components.search.SearchComponent;
 import com.mmt.pages.factories.SearchComponentFactory;
-import org.openqa.selenium.By;
 
 @Page
 public class HomePage extends BaseUI {
+    private static final HomePageLocator homePageLocator = LocatorHelper.getLocators("locators/homepage.yml");
     private String homeUrl = "https://makemytrip.com/";
     private SearchComponent searchComponent;
-    private By flightLinkLocator = By.className("menu_Flights");
-    private By hotelLinkLocator = By.className("menu_Hotels");
 
     public HomePage() {
         driver.get(homeUrl);
@@ -19,8 +19,8 @@ public class HomePage extends BaseUI {
 
     public HomePage selectService(ServiceOption option) {
         switch (option) {
-            case HOTELS -> getElement(hotelLinkLocator).click();
-            case FLIGHTS, DEFAULT -> getElement(flightLinkLocator).click();
+            case HOTELS -> getElement(homePageLocator.hotelOption()).click();
+            case FLIGHTS, DEFAULT -> getElement(homePageLocator.flightOption()).click();
         }
         searchComponent = SearchComponentFactory.getInstance(option);
         return this;
