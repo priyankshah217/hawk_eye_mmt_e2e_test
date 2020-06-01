@@ -6,18 +6,19 @@ import com.mmt.annotations.Locators;
 
 @Locators
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record HotelReviewBookingLocator(@JsonProperty("roomName")
-                                        String firstName,
-                                        @JsonProperty("lastName")
-                                        String lastName,
-                                        @JsonProperty("email")
-                                        String email,
-                                        @JsonProperty("mobileNumber")
-                                        String mobileNumber,
-                                        @JsonProperty("specialRequests")
-                                        String specialRequests,
-                                        @JsonProperty("donation")
-                                        String donation,
-                                        @JsonProperty("paymentButton")
-                                        String paymentButton) {
+public record HotelReviewBookingLocator(
+        @JsonProperty("roomName")
+        String firstName,
+        @JsonProperty("lastName")
+        String lastName,
+        @JsonProperty("email")
+        String email,
+        @JsonProperty("mobileNumber")
+        String mobileNumber,
+        @JsonProperty("specialRequests")
+        String specialRequests,
+        @JsonProperty("donation")
+        String donation,
+        @JsonProperty("paymentButton")
+        String paymentButton) {
 }

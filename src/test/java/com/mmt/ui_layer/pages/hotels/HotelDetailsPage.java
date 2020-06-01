@@ -13,11 +13,10 @@ import java.util.Objects;
 public class HotelDetailsPage extends UILayer {
     private static final HotelDetailsLocator hotelDetailsLocator = LocatorHelper.getLocators("locators/hoteldetails.yml");
 
-    public HotelReviewBookingPage selectRoom() {
+    public void selectRoom() {
         scrollToElement(Objects.requireNonNull(hotelDetailsLocator).roomSection());
         storeRoomDetails();
         getElement(hotelDetailsLocator.selectRoom()).click();
-        return new HotelReviewBookingPage();
     }
 
     private void storeRoomDetails() {
