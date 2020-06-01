@@ -15,20 +15,19 @@ public class DriverHelper {
 
 
     public static void createDriver(String browserName, String hubUrl) throws MalformedURLException {
-        final WebDriver webDriver = getRemoteWebDriver(browserName, hubUrl);
+        final WebDriver webDriver = hubUrl != null ? getRemoteWebDriver(browserName, hubUrl) : getLocalWebDriver(browserName);
         if (webDriverThreadLocal == null) {
             webDriverThreadLocal = ThreadLocal.withInitial(() -> webDriver);
         }
         webDriverThreadLocal.set(webDriver);
     }
 
+    public static void createDriver(String browserName) throws MalformedURLException {
+        createDriver(browserName, null);
+    }
+
     private static WebDriver getRemoteWebDriver(String browserName, String hubUrl) throws MalformedURLException {
-        String browser = browserName.toLowerCase();
-        if (browser.contains("local")) {
-            return getLocalWebDriver(browserName);
-        } else {
-            return new RemoteWebDriver(new URL(hubUrl), CapabilityHelper.getCapabilities(browserName));
-        }
+        return new RemoteWebDriver(new URL(hubUrl), CapabilityHelper.getCapabilities(browserName));
     }
 
     @NotNull

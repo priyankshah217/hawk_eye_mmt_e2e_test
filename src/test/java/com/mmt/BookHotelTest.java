@@ -15,11 +15,22 @@ import java.net.MalformedURLException;
 public class BookHotelTest {
 
     @BeforeMethod
-    @Parameters(value = {"browserName", "hubUrl", "url"})
-    public void setup(String browserName, String hubUrl, String url) throws MalformedURLException {
-        DriverHelper.createDriver(browserName, hubUrl);
+    @Parameters(value = {"browserName", "run", "hubUrl", "url"})
+    public void setup(String browserName, String run, String hubUrl, String url) throws MalformedURLException {
+        if (isRemoteRun(run, hubUrl)) {
+            DriverHelper.createDriver(browserName.toLowerCase(), hubUrl);
+        } else {
+            DriverHelper.createDriver(browserName.toLowerCase());
+        }
         BrowserHelper.launchUrl(url);
         RunHelper.initRunData();
+    }
+
+    private boolean isRemoteRun(String run, String hubUrl) {
+        if (hubUrl.equals("") && run.equalsIgnoreCase("remote"))
+            throw new RuntimeException("Hub url should not be empty");
+        else
+            return !run.equalsIgnoreCase("local");
     }
 
     @Test
