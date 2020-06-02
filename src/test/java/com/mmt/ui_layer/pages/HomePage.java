@@ -8,25 +8,21 @@ import com.mmt.ui_layer.components.search.SearchComponent;
 import com.mmt.ui_layer.factories.SearchComponentFactory;
 import com.mmt.ui_layer.pages.base.SearchResultPage;
 import com.mmt.ui_layer.pages.base.UILayer;
+import org.openqa.selenium.WebElement;
 
 import java.util.Objects;
 
 @Page
 public class HomePage extends UILayer {
     private static final HomePageLocator homePageLocator = LocatorHelper.getLocators("locators/homepage.yml");
-    private String homeUrl = "https://makemytrip.com/";
     private SearchComponent searchComponent;
 
-
-    public HomePage() {
-        driver.get(homeUrl);
-    }
-
     public HomePage selectService(ServiceOption option) {
-        switch (option) {
-            case HOTELS -> getElement(Objects.requireNonNull(homePageLocator).hotelOption()).click();
-            case FLIGHTS, DEFAULT -> getElement(Objects.requireNonNull(homePageLocator).flightOption()).click();
-        }
+        WebElement selectedOption = switch (option) {
+            case HOTELS -> getElement(Objects.requireNonNull(homePageLocator).hotelOption());
+            case FLIGHTS, DEFAULT -> getElement(Objects.requireNonNull(homePageLocator).flightOption());
+        };
+        selectedOption.click();
         searchComponent = SearchComponentFactory.getInstance(option);
         return this;
     }
