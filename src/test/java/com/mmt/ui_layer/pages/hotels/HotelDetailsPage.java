@@ -6,20 +6,22 @@ import com.mmt.helpers.LocatorHelper;
 import com.mmt.helpers.RunHelper;
 import com.mmt.locators.HotelDetailsLocator;
 import com.mmt.ui_layer.pages.base.UILayer;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
 @Page
 public class HotelDetailsPage extends UILayer {
-    private static final HotelDetailsLocator hotelDetailsLocator = LocatorHelper.getLocators("locators/hoteldetails.yml");
+    @NotNull
+    private static final HotelDetailsLocator hotelDetailsLocator = Objects.requireNonNull(LocatorHelper.getLocators("locators/hoteldetails.yml"));
 
     public void selectRoom() {
-        scrollToElement(Objects.requireNonNull(hotelDetailsLocator).roomSection());
+        scrollToElement(hotelDetailsLocator.roomSection());
         storeRoomDetails();
         getElement(hotelDetailsLocator.selectRoom()).click();
     }
 
     private void storeRoomDetails() {
-        RunHelper.addRunData(HotelDetail.ROOM_NAME, getElement(Objects.requireNonNull(hotelDetailsLocator).roomName()).getText());
+        RunHelper.addRunData(HotelDetail.ROOM_NAME, getElement(hotelDetailsLocator.roomName()).getText());
     }
 }

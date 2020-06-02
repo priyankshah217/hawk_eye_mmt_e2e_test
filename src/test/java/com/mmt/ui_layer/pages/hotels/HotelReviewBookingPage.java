@@ -5,6 +5,7 @@ import com.mmt.data_models.Traveller;
 import com.mmt.helpers.LocatorHelper;
 import com.mmt.locators.HotelReviewBookingLocator;
 import com.mmt.ui_layer.pages.base.ReviewBookingPage;
+import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -14,31 +15,33 @@ import static com.mmt.helpers.ResourceHelper.getData;
 
 @Page
 public class HotelReviewBookingPage extends ReviewBookingPage {
-    private static final HotelReviewBookingLocator hotelReviewBookingLocator = LocatorHelper.getLocators("locators/hotelreviewbooking.yml");
+
+    @NotNull
+    private static final HotelReviewBookingLocator hotelReviewBookingLocator = Objects.requireNonNull(LocatorHelper.getLocators("locators/hotelreviewbooking.yml"));
     Traveller traveller = getData("data/traveller.yml");
 
     public HotelReviewBookingPage addTravellerDetails() {
-        getElement(Objects.requireNonNull(hotelReviewBookingLocator).firstName()).sendKeys(traveller.firstName());
-        getElement(Objects.requireNonNull(hotelReviewBookingLocator).lastName()).sendKeys(traveller.lastName());
-        getElement(Objects.requireNonNull(hotelReviewBookingLocator).email()).sendKeys(traveller.email());
-        getElement(Objects.requireNonNull(hotelReviewBookingLocator).email()).sendKeys(traveller.mobileNumber());
+        getElement(hotelReviewBookingLocator.firstName()).sendKeys(traveller.firstName());
+        getElement(hotelReviewBookingLocator.lastName()).sendKeys(traveller.lastName());
+        getElement(hotelReviewBookingLocator.email()).sendKeys(traveller.email());
+        getElement(hotelReviewBookingLocator.email()).sendKeys(traveller.mobileNumber());
         return this;
     }
 
     public HotelReviewBookingPage addSpecialRequests(int numberOfSpecialRequests) {
-        List<WebElement> availableSpecialRequests = getElements(Objects.requireNonNull(hotelReviewBookingLocator).specialRequests());
+        List<WebElement> availableSpecialRequests = getElements(hotelReviewBookingLocator.specialRequests());
         int specialRequestsToSelect = Math.min(availableSpecialRequests.size(), numberOfSpecialRequests);
         availableSpecialRequests.subList(0, specialRequestsToSelect).forEach(WebElement::click);
         return this;
     }
 
     public ReviewBookingPage removeDonations() {
-        getElement(Objects.requireNonNull(hotelReviewBookingLocator).donation()).click();
+        getElement(hotelReviewBookingLocator.donation()).click();
         return this;
     }
 
     @Override
     public void proceedToPay() {
-        getElement(Objects.requireNonNull(hotelReviewBookingLocator).paymentButton()).click();
+        getElement(hotelReviewBookingLocator.paymentButton()).click();
     }
 }

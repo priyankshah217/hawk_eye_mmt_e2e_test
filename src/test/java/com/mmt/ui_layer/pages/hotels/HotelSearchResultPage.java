@@ -6,6 +6,7 @@ import com.mmt.helpers.LocatorHelper;
 import com.mmt.helpers.RunHelper;
 import com.mmt.locators.HotelSearchResultLocator;
 import com.mmt.ui_layer.pages.base.SearchResultPage;
+import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -15,12 +16,13 @@ import java.util.stream.Collectors;
 
 @Page
 public class HotelSearchResultPage extends SearchResultPage {
-    private static final HotelSearchResultLocator hotelSearchResultLocator = LocatorHelper.getLocators("locators/hotelsearchresult.yml");
-    private String minimumUserRating = "4";
-    private By hotelNameLocator = By.id("hlistpg_hotel_name");
+    @NotNull
+    private static final HotelSearchResultLocator hotelSearchResultLocator = Objects.requireNonNull(LocatorHelper.getLocators("locators/hotelsearchresult.yml"));
+    private final String minimumUserRating = "4";
+    private final By hotelNameLocator = By.id("hlistpg_hotel_name");
     private final int maxSliderMoves = 3;
     private final String requiredMinPrice = "INR 1000";
-    private By userRatingsItems = By.tagName("li");
+    private final By userRatingsItems = By.tagName("li");
 
     public SearchResultPage applyFilters() {
         dismissBackdrop();
@@ -30,7 +32,7 @@ public class HotelSearchResultPage extends SearchResultPage {
     }
 
     public HotelDetailsPage selectHotelAtPosition(int position) {
-        WebElement selectedHotel = getElements(Objects.requireNonNull(hotelSearchResultLocator).results()).get(position);
+        WebElement selectedHotel = getElements(hotelSearchResultLocator.results()).get(position);
         storeHotelDetails(selectedHotel);
         selectedHotel.click();
         switchToLastTab();
@@ -43,25 +45,25 @@ public class HotelSearchResultPage extends SearchResultPage {
     }
 
     private void dismissBackdrop() {
-        getElement(Objects.requireNonNull(hotelSearchResultLocator).backdrop()).click();
+        getElement(hotelSearchResultLocator.backdrop()).click();
     }
 
     private void applyMinPriceFilter(int maxTries) {
-        scrollToElement(Objects.requireNonNull(hotelSearchResultLocator).priceSlider());
+        scrollToElement(hotelSearchResultLocator.priceSlider());
         if (isNotRequiredPrice() && maxTries > 0) {
-            getElement(Objects.requireNonNull(hotelSearchResultLocator).priceSlider()).sendKeys(Keys.ARROW_RIGHT);
+            getElement(hotelSearchResultLocator.priceSlider()).sendKeys(Keys.ARROW_RIGHT);
             applyMinPriceFilter(--maxTries);
         }
     }
 
     private boolean isNotRequiredPrice() {
-        return !getElement(Objects.requireNonNull(hotelSearchResultLocator).minValue())
+        return !getElement(hotelSearchResultLocator.minValue())
                 .getText().equals(requiredMinPrice);
     }
 
     private void applyRatingFilter() {
-        scrollToElement(Objects.requireNonNull(hotelSearchResultLocator).userRating());
-        getElement(Objects.requireNonNull(hotelSearchResultLocator).userRating())
+        scrollToElement(hotelSearchResultLocator.userRating());
+        getElement(hotelSearchResultLocator.userRating())
                 .findElements(userRatingsItems).stream()
                 .filter(e -> e.getText().contains(minimumUserRating))
                 .collect(Collectors.toList())
