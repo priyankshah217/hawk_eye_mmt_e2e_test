@@ -4,7 +4,6 @@ import com.mmt.annotations.Page;
 import com.mmt.enums.HotelDetail;
 import com.mmt.helpers.ElementHelper;
 import com.mmt.helpers.LocatorHelper;
-import com.mmt.helpers.RunHelper;
 import com.mmt.locators.HotelSearchResultLocator;
 import com.mmt.ui_layer.pages.base.SearchResultPage;
 import org.jetbrains.annotations.NotNull;
@@ -14,6 +13,10 @@ import org.openqa.selenium.WebElement;
 
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import static com.mmt.helpers.ElementHelper.getElement;
+import static com.mmt.helpers.ElementHelper.scrollToElement;
+import static com.mmt.helpers.RunHelper.addRunData;
 
 @Page
 public class HotelSearchResultPage extends SearchResultPage {
@@ -42,29 +45,29 @@ public class HotelSearchResultPage extends SearchResultPage {
 
     private void storeHotelDetails(WebElement selectedHotel) {
         String hotelName = selectedHotel.findElement(hotelNameLocator).getText();
-        RunHelper.addRunData(HotelDetail.HOTEL_NAME, hotelName);
+        addRunData(HotelDetail.HOTEL_NAME, hotelName);
     }
 
     private void dismissBackdrop() {
-        ElementHelper.getElement(hotelSearchResultLocator.backdrop()).click();
+        getElement(hotelSearchResultLocator.backdrop()).click();
     }
 
     private void applyMinPriceFilter(int maxTries) {
-        ElementHelper.scrollToElement(hotelSearchResultLocator.priceSlider());
+        scrollToElement(hotelSearchResultLocator.priceSlider());
         if (isNotRequiredPrice() && maxTries > 0) {
-            ElementHelper.getElement(hotelSearchResultLocator.priceSlider()).sendKeys(Keys.ARROW_RIGHT);
+            getElement(hotelSearchResultLocator.priceSlider()).sendKeys(Keys.ARROW_RIGHT);
             applyMinPriceFilter(--maxTries);
         }
     }
 
     private boolean isNotRequiredPrice() {
-        return !ElementHelper.getElement(hotelSearchResultLocator.minValue())
+        return !getElement(hotelSearchResultLocator.minValue())
                 .getText().equals(requiredMinPrice);
     }
 
     private void applyRatingFilter() {
-        ElementHelper.scrollToElement(hotelSearchResultLocator.userRating());
-        ElementHelper.getElement(hotelSearchResultLocator.userRating())
+        scrollToElement(hotelSearchResultLocator.userRating());
+        getElement(hotelSearchResultLocator.userRating())
                 .findElements(userRatingsItems).stream()
                 .filter(e -> e.getText().contains(minimumUserRating))
                 .collect(Collectors.toList())
