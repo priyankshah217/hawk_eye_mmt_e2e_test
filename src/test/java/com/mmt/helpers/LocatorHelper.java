@@ -3,7 +3,7 @@ package com.mmt.helpers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.mmt.annotations.Locators;
-import org.reflections8.Reflections;
+import org.reflections.Reflections;
 
 import java.io.File;
 import java.io.IOException;
