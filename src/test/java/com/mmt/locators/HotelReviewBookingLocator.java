@@ -7,7 +7,7 @@ import com.mmt.annotations.Locators;
 @Locators
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record HotelReviewBookingLocator(
-        @JsonProperty("roomName")
+        @JsonProperty("firstName")
         String firstName,
         @JsonProperty("lastName")
         String lastName,

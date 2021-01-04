@@ -2,6 +2,7 @@ package com.mmt.ui_layer.pages;
 
 import com.mmt.annotations.Page;
 import com.mmt.enums.ServiceOption;
+import com.mmt.helpers.ElementHelper;
 import com.mmt.helpers.LocatorHelper;
 import com.mmt.locators.HomePageLocator;
 import com.mmt.ui_layer.components.search.SearchComponent;
@@ -19,8 +20,8 @@ public class HomePage extends UILayer {
 
     public HomePage selectService(ServiceOption option) {
         WebElement selectedOption = switch (option) {
-            case HOTELS -> getElement(Objects.requireNonNull(homePageLocator).hotelOption());
-            case FLIGHTS, DEFAULT -> getElement(Objects.requireNonNull(homePageLocator).flightOption());
+            case HOTELS -> ElementHelper.getElement(Objects.requireNonNull(homePageLocator).hotelOption());
+            case FLIGHTS, DEFAULT -> ElementHelper.getElement(Objects.requireNonNull(homePageLocator).flightOption());
         };
         selectedOption.click();
         searchComponent = SearchComponentFactory.getInstance(option);

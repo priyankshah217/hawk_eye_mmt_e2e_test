@@ -2,6 +2,7 @@ package com.mmt.ui_layer.pages.hotels;
 
 import com.mmt.annotations.Page;
 import com.mmt.data_models.Traveller;
+import com.mmt.helpers.ElementHelper;
 import com.mmt.helpers.LocatorHelper;
 import com.mmt.locators.HotelReviewBookingLocator;
 import com.mmt.ui_layer.pages.base.ReviewBookingPage;
@@ -21,27 +22,27 @@ public class HotelReviewBookingPage extends ReviewBookingPage {
     Traveller traveller = getData("data/traveller.yml");
 
     public HotelReviewBookingPage addTravellerDetails() {
-        getElement(hotelReviewBookingLocator.firstName()).sendKeys(traveller.firstName());
-        getElement(hotelReviewBookingLocator.lastName()).sendKeys(traveller.lastName());
-        getElement(hotelReviewBookingLocator.email()).sendKeys(traveller.email());
-        getElement(hotelReviewBookingLocator.email()).sendKeys(traveller.mobileNumber());
+        ElementHelper.getElement(hotelReviewBookingLocator.firstName()).sendKeys(traveller.firstName());
+        ElementHelper.getElement(hotelReviewBookingLocator.lastName()).sendKeys(traveller.lastName());
+        ElementHelper.getElement(hotelReviewBookingLocator.email()).sendKeys(traveller.email());
+        ElementHelper.getElement(hotelReviewBookingLocator.email()).sendKeys(traveller.mobileNumber());
         return this;
     }
 
     public HotelReviewBookingPage addSpecialRequests(int numberOfSpecialRequests) {
-        List<WebElement> availableSpecialRequests = getElements(hotelReviewBookingLocator.specialRequests());
+        List<WebElement> availableSpecialRequests = ElementHelper.getElements(hotelReviewBookingLocator.specialRequests());
         int specialRequestsToSelect = Math.min(availableSpecialRequests.size(), numberOfSpecialRequests);
         availableSpecialRequests.subList(0, specialRequestsToSelect).forEach(WebElement::click);
         return this;
     }
 
     public ReviewBookingPage removeDonations() {
-        getElement(hotelReviewBookingLocator.donation()).click();
+        ElementHelper.getElement(hotelReviewBookingLocator.donation()).click();
         return this;
     }
 
     @Override
     public void proceedToPay() {
-        getElement(hotelReviewBookingLocator.paymentButton()).click();
+        ElementHelper.getElement(hotelReviewBookingLocator.paymentButton()).click();
     }
 }

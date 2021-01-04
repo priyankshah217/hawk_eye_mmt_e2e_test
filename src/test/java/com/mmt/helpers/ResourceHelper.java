@@ -6,7 +6,7 @@ import com.mmt.annotations.Data;
 import com.mmt.annotations.Locators;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.reflections.Reflections;
+import org.reflections8.Reflections;
 
 import java.io.File;
 import java.io.IOException;

@@ -4,7 +4,7 @@ import com.mmt.annotations.Page;
 import com.mmt.annotations.PageComponent;
 import com.mmt.ui_layer.components.search.SearchComponent;
 import com.mmt.ui_layer.pages.base.UILayer;
-import org.reflections.Reflections;
+import org.reflections8.Reflections;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;

@@ -1,6 +1,7 @@
 package com.mmt.ui_layer.components.search;
 
 import com.mmt.annotations.PageComponent;
+import com.mmt.helpers.ElementHelper;
 import com.mmt.helpers.LocatorHelper;
 import com.mmt.locators.HotelSearchComponentLocator;
 import com.mmt.ui_layer.pages.base.SearchResultPage;
@@ -19,15 +20,15 @@ public class HotelSearchComponent extends SearchComponent {
 
 
     public SearchResultPage search() {
-        getElement(hotelSearchComponentLocator.searchButton()).click();
+        ElementHelper.getElement(hotelSearchComponentLocator.searchButton()).click();
         return new HotelSearchResultPage();
     }
 
     public void populateSearchDetails() {
-        getElement(Objects.requireNonNull(hotelSearchComponentLocator).location()).click();
-        getElement(hotelSearchComponentLocator.locationInput()).sendKeys("Goa");
-        getElements(hotelSearchComponentLocator.locationList()).stream().findFirst().get().click();
-        getElement(hotelSearchComponentLocator.checkInButton()).click();
+        ElementHelper.getElement(Objects.requireNonNull(hotelSearchComponentLocator).location()).click();
+        ElementHelper.getElement(hotelSearchComponentLocator.locationInput()).sendKeys("Goa");
+        ElementHelper.getElements(hotelSearchComponentLocator.locationList()).stream().findFirst().get().click();
+        ElementHelper.getElement(hotelSearchComponentLocator.checkInButton()).click();
         List<WebElement> webElementList = getCheckinDates();
         webElementList.get(1).click();
         webElementList.get(5).click();
@@ -36,21 +37,21 @@ public class HotelSearchComponent extends SearchComponent {
     }
 
     private void addRoom() {
-        getElement(hotelSearchComponentLocator.guestLocator()).click();
+        ElementHelper.getElement(hotelSearchComponentLocator.guestLocator()).click();
         List<WebElement> guestList = getGuestList();
         guestList.get(3).click();
         guestList.get(13).click();
-        getElement(hotelSearchComponentLocator.saveGuest()).click();
+        ElementHelper.getElement(hotelSearchComponentLocator.saveGuest()).click();
     }
 
     private void selectTravellingFor() {
-        getElement(Objects.requireNonNull(hotelSearchComponentLocator).travelForButton()).click();
-        getElement(hotelSearchComponentLocator.travelForOptions()).findElements(By.tagName("li")).get(0).click();
+        ElementHelper.getElement(Objects.requireNonNull(hotelSearchComponentLocator).travelForButton()).click();
+        ElementHelper.getElement(hotelSearchComponentLocator.travelForOptions()).findElements(By.tagName("li")).get(0).click();
     }
 
     @NotNull
     private List<WebElement> getGuestList() {
-        return getElements(Objects.requireNonNull(hotelSearchComponentLocator).roomDetails())
+        return ElementHelper.getElements(Objects.requireNonNull(hotelSearchComponentLocator).roomDetails())
                 .stream()
                 .filter(webElement -> !webElement.getText().isBlank())
                 .flatMap(webElement -> webElement.findElements(By.tagName("li")).stream())
@@ -59,7 +60,7 @@ public class HotelSearchComponent extends SearchComponent {
 
     @NotNull
     private List<WebElement> getCheckinDates() {
-        return getElements(Objects.requireNonNull(hotelSearchComponentLocator).dateController())
+        return ElementHelper.getElements(Objects.requireNonNull(hotelSearchComponentLocator).dateController())
                 .stream()
                 .filter(webElement -> webElement.getAttribute("aria-disabled").equals("false"))
                 .collect(Collectors.toList());
